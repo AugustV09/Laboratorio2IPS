@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
 from correlfft import correlacion_circular_fft
-from obtener_señal import obtener_senial_periodo
+from obtener_senial import obtener_senial_periodo
 
 # Agregar la ruta donde está cacode.m al path de Octave
 ruta_archivos = os.path.join(os.path.dirname(__file__), 'Archivos_PU2a')
