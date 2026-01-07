@@ -23,14 +23,20 @@ y = octave.cacode(14) #codigo Gold correspondiente al satelite 14
 # Convertir a array de numpy
 y = np.array(y).flatten()
 
-# Calcular autocorrelación de x
+# Calcular autocorrelación de x 
 autocorr_x = correlacion_circular_fft(x, x)
+# Desplazar el resultado de la autocorrelación 511 muestras a la derecha
+autocorr_x = np.roll(autocorr_x, 511)
 
 # Calcular autocorrelación de y
 autocorr_y = correlacion_circular_fft(y, y)
+# Desplazar el resultado de la autocorrelación 511 muestras a la derecha
+autocorr_y = np.roll(autocorr_y, 511)
 
 # Calcular intercorrelación de x e y
 intercorr_xy = correlacion_circular_fft(x, y)
+# Desplazar el resultado de la autocorrelación 511 muestras a la derecha
+intercorr_xy = np.roll(intercorr_xy, 511)
 
 # Crear array de retardos de -511 a 511
 retardos = np.arange(-511, 512)
@@ -41,21 +47,21 @@ fig, axes = plt.subplots(3, 1, figsize=(10, 10))
 # Gráfico 1: Autocorrelación de x
 axes[0].plot(retardos, autocorr_x, 'b-', linewidth=1.5)
 axes[0].set_title('Autocorrelación de x (código Gold satélite 3)')
-axes[0].set_xlabel('Retardo')
+axes[0].set_xlabel('m')
 axes[0].set_ylabel('Correlación')
 axes[0].grid(True, alpha=0.3)
 
 # Gráfico 2: Autocorrelación de y
 axes[1].plot(retardos, autocorr_y, 'r-', linewidth=1.5)
 axes[1].set_title('Autocorrelación de y (código Gold satélite 14)')
-axes[1].set_xlabel('Retardo')
+axes[1].set_xlabel('m')
 axes[1].set_ylabel('Correlación')
 axes[1].grid(True, alpha=0.3)
 
 # Gráfico 3: Intercorrelación de x e y
 axes[2].plot(retardos, intercorr_xy, 'g-', linewidth=1.5)
 axes[2].set_title('Intercorrelación de x e y')
-axes[2].set_xlabel('Retardo')
+axes[2].set_xlabel('m')
 axes[2].set_ylabel('Correlación')
 axes[2].grid(True, alpha=0.3)
 
@@ -68,7 +74,7 @@ plt.plot(retardos, autocorr_x, 'b-', label='Autocorrelación de x', linewidth=1.
 plt.plot(retardos, autocorr_y, 'r-', label='Autocorrelación de y', linewidth=1.5, alpha=0.7)
 plt.plot(retardos, intercorr_xy, 'g-', label='Intercorrelación x-y', linewidth=1.5, alpha=0.7)
 plt.title('Comparación de Correlaciones')
-plt.xlabel('Retardo')
+plt.xlabel('m')
 plt.ylabel('Correlación')
 plt.legend()
 plt.grid(True, alpha=0.3)

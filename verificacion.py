@@ -18,7 +18,7 @@ x = octave.cacode(12) #codigo Gold correspondiente al satelite 12
 # Convertir a array de numpy
 x = np.array(x).flatten()
 
-# y = randi([0,1],size(x)); y(y==0) = -1;
+
 # Generar señal aleatoria binaria del mismo tamaño que x
 y = np.random.randint(0, 2, size=len(x))
 # Convertir 0 a -1
@@ -39,7 +39,7 @@ fig, axes = plt.subplots(3, 1, figsize=(10, 10))
 # Gráfico 1: Autocorrelación de x
 axes[0].plot(autocorr_x, 'b-', linewidth=1.5)
 axes[0].set_title('Autocorrelación de x (código Gold satélite 12)')
-axes[0].set_xlabel('n')
+axes[0].set_xlabel('m')
 axes[0].set_ylabel('Correlación')
 axes[0].grid(True, alpha=0.3)
 
@@ -53,7 +53,7 @@ axes[1].grid(True, alpha=0.3)
 # Gráfico 3: Intercorrelación de x e y
 axes[2].plot(intercorr_xy, 'g-', linewidth=1.5)
 axes[2].set_title('Intercorrelación de x e y')
-axes[2].set_xlabel('n')
+axes[2].set_xlabel('m')
 axes[2].set_ylabel('Correlación')
 axes[2].grid(True, alpha=0.3)
 
@@ -66,7 +66,7 @@ plt.plot(autocorr_x, 'b-', label='Autocorrelación de x', linewidth=1.5, alpha=0
 plt.plot(autocorr_y, 'r-', label='Autocorrelación de y', linewidth=1.5, alpha=0.7)
 plt.plot(intercorr_xy, 'g-', label='Intercorrelación x-y', linewidth=1.5, alpha=0.7)
 plt.title('Comparación de Correlaciones')
-plt.xlabel('n')
+plt.xlabel('m')
 plt.ylabel('Correlación')
 plt.legend()
 plt.grid(True, alpha=0.3)
