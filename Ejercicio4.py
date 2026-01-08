@@ -7,7 +7,7 @@ os.environ["OCTAVE_EXECUTABLE"] = (
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
-from correlfft import correlacion_circular_fft
+from Ejercicio1 import correlfft
 
 # Agregar la ruta donde está cacode.m al path de Octave
 ruta_archivos = os.path.join(os.path.dirname(__file__), 'Archivos_PU2a')
@@ -22,7 +22,7 @@ x = np.array(x).flatten()
 y = np.roll(x, 200)
 
 # Calcular intercorrelación de x e y
-intercorr_xy = correlacion_circular_fft(x, y)
+intercorr_xy = correlfft(x, y)
 
 plt.figure(figsize=(12, 6))
 plt.plot(intercorr_xy, 'g-', linewidth=1.5, alpha=0.7)

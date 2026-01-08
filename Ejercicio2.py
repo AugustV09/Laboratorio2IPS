@@ -7,7 +7,7 @@ os.environ["OCTAVE_EXECUTABLE"] = (
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
-from correlfft import correlacion_circular_fft
+from Ejercicio1 import correlfft
 
 # Agregar la ruta donde está cacode.m al path de Octave
 ruta_archivos = os.path.join(os.path.dirname(__file__), 'Archivos_PU2a')
@@ -25,13 +25,13 @@ y = np.random.randint(0, 2, size=len(x))
 y[y == 0] = -1
 
 # Calcular autocorrelación de x
-autocorr_x = correlacion_circular_fft(x, x)
+autocorr_x = correlfft(x, x)
 
 # Calcular autocorrelación de y
-autocorr_y = correlacion_circular_fft(y, y)
+autocorr_y = correlfft(y, y)
 
 # Calcular intercorrelación de x e y
-intercorr_xy = correlacion_circular_fft(x, y)
+intercorr_xy = correlfft(x, y)
 
 # Crear gráficos para comparar las 3 correlaciones
 fig, axes = plt.subplots(3, 1, figsize=(10, 10))
@@ -46,7 +46,7 @@ axes[0].grid(True, alpha=0.3)
 # Gráfico 2: Autocorrelación de y
 axes[1].plot(autocorr_y, 'r-', linewidth=1.5)
 axes[1].set_title('Autocorrelación de y')
-axes[1].set_xlabel('n')
+axes[1].set_xlabel('m')
 axes[1].set_ylabel('Correlación')
 axes[1].grid(True, alpha=0.3)
 
@@ -60,7 +60,7 @@ axes[2].grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# También crear un gráfico comparativo superpuesto
+'''# También crear un gráfico comparativo superpuesto
 plt.figure(figsize=(12, 6))
 plt.plot(autocorr_x, 'b-', label='Autocorrelación de x', linewidth=1.5, alpha=0.7)
 plt.plot(autocorr_y, 'r-', label='Autocorrelación de y', linewidth=1.5, alpha=0.7)
@@ -71,7 +71,7 @@ plt.ylabel('Correlación')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.show()
+plt.show()'''
 
 print(f"Longitud de x: {len(x)}")
 print(f"Longitud de y: {len(y)}")

@@ -7,7 +7,7 @@ os.environ["OCTAVE_EXECUTABLE"] = (
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
-from correlfft import correlacion_circular_fft
+from Ejercicio1 import correlfft
 
 # Agregar la ruta donde está cacode.m al path de Octave
 ruta_archivos = os.path.join(os.path.dirname(__file__), 'Archivos_PU2a')
@@ -24,17 +24,17 @@ y = octave.cacode(14) #codigo Gold correspondiente al satelite 14
 y = np.array(y).flatten()
 
 # Calcular autocorrelación de x 
-autocorr_x = correlacion_circular_fft(x, x)
+autocorr_x = correlfft(x, x)
 # Desplazar el resultado de la autocorrelación 511 muestras a la derecha
 autocorr_x = np.roll(autocorr_x, 511)
 
 # Calcular autocorrelación de y
-autocorr_y = correlacion_circular_fft(y, y)
+autocorr_y = correlfft(y, y)
 # Desplazar el resultado de la autocorrelación 511 muestras a la derecha
 autocorr_y = np.roll(autocorr_y, 511)
 
 # Calcular intercorrelación de x e y
-intercorr_xy = correlacion_circular_fft(x, y)
+intercorr_xy = correlfft(x, y)
 # Desplazar el resultado de la autocorrelación 511 muestras a la derecha
 intercorr_xy = np.roll(intercorr_xy, 511)
 

@@ -7,7 +7,7 @@ os.environ["OCTAVE_EXECUTABLE"] = (
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
-from correlfft import correlacion_circular_fft
+from Ejercicio1 import correlfft
 from obtener_senial import obtener_senial_periodo
 
 # Agregar la ruta donde está cacode.m al path de Octave
@@ -54,7 +54,7 @@ for svnum in satelites:
     codigo = np.array(codigo).flatten()
     
     # Calcular correlación circular entre la señal período y el código Gold
-    correlacion = correlacion_circular_fft(senial_periodo_ruido, codigo)
+    correlacion = correlfft(senial_periodo_ruido, codigo)
     
     # Encontrar el retardo y valor máximo
     retardo_max = np.argmax(correlacion)

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def correlacion_circular_fft(x, y):
+def correlfft(x, y):
     """
     Calcula la correlación circular de dos señales usando FFT.
     

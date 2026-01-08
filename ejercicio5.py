@@ -7,7 +7,7 @@ os.environ["OCTAVE_EXECUTABLE"] = (
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave
-from correlfft import correlacion_circular_fft
+from Ejercicio1 import correlfft
 from obtener_senial import obtener_senial_periodo
 
 # Agregar la ruta donde está cacode.m al path de Octave
@@ -28,7 +28,7 @@ for svnum in range(1, 33):
     codigo = np.array(codigo).flatten()
     
     # Calcular intercorrelación circular
-    intercorr = correlacion_circular_fft(senial_periodo, codigo)
+    intercorr = correlfft(senial_periodo, codigo)
     
     # Almacenar resultados
 
