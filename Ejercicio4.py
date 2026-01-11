@@ -21,15 +21,43 @@ x = np.array(x).flatten()
 # y será x pero desplzada 200 muestras hacia la derecha
 y = np.roll(x, 200)
 
-# Calcular intercorrelación de x e y
+# Calcular intercorrelación de x con y
 intercorr_xy = correlfft(x, y)
 
-plt.figure(figsize=(12, 6))
-plt.plot(intercorr_xy, 'g-', linewidth=1.5, alpha=0.7)
-plt.title('Intercorrelación x-y')
-plt.xlabel('n')
-plt.ylabel('Correlación')
-plt.legend()
-plt.grid(True, alpha=0.3)
+# Calcular intercorrelación de y con x
+intercorr_yx = correlfft(y, x)
+
+# Encontrar el índice del pico de correlación para x-y
+indice_pico_xy = np.argmax(intercorr_xy)
+valor_pico_xy = intercorr_xy[indice_pico_xy]
+
+# Encontrar el índice del pico de correlación para y-x
+indice_pico_yx = np.argmax(intercorr_yx)
+valor_pico_yx = intercorr_yx[indice_pico_yx]
+
+print(f"El pico de correlación x-y se encuentra en el retardo: {indice_pico_xy}")
+print(f"El pico de correlación y-x se encuentra en el retardo: {indice_pico_yx}")
+
+# Crear figura con dos subgráficos
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+
+# Gráfico 1: Intercorrelación x-y
+ax1.plot(intercorr_xy, 'g-', linewidth=1.5, alpha=0.7)
+ax1.axvline(x=indice_pico_xy, color='r', linestyle='--', alpha=0.5, linewidth=1.5, label=f'Pico en m={indice_pico_xy}')
+ax1.set_title('Intercorrelación x-y')
+ax1.set_xlabel('m')
+ax1.set_ylabel('Correlación')
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+
+# Gráfico 2: Intercorrelación y-x
+ax2.plot(intercorr_yx, 'g-', linewidth=1.5, alpha=0.7)
+ax2.axvline(x=indice_pico_yx, color='r', linestyle='--', alpha=0.5, linewidth=1.5, label=f'Pico en m={indice_pico_yx}')
+ax2.set_title('Intercorrelación y-x')
+ax2.set_xlabel('m')
+ax2.set_ylabel('Correlación')
+ax2.legend()
+ax2.grid(True, alpha=0.3)
+
 plt.tight_layout()
 plt.show()
