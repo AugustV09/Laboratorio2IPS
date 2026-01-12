@@ -68,19 +68,6 @@ axes[2].grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-'''# También crear un gráfico comparativo superpuesto
-plt.figure(figsize=(12, 6))
-plt.plot(retardos, autocorr_x, 'b-', label='Autocorrelación de x', linewidth=1.5, alpha=0.7)
-plt.plot(retardos, autocorr_y, 'r-', label='Autocorrelación de y', linewidth=1.5, alpha=0.7)
-plt.plot(retardos, intercorr_xy, 'g-', label='Intercorrelación x-y', linewidth=1.5, alpha=0.7)
-plt.title('Comparación de Correlaciones')
-plt.xlabel('m')
-plt.ylabel('Correlación')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()'''
-
 print(f"Longitud de x: {len(x)}")
 print(f"Longitud de y: {len(y)}")
 print(f"Valor máximo autocorrelación x: {np.max(autocorr_x):.2f}")
