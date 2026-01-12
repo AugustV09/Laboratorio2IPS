@@ -18,7 +18,7 @@ octave.addpath(ruta_archivos)
 senial_periodo = obtener_senial_periodo()
 
 # Generar la señal con los periodos que se quieran
-periodo = 2
+periodo = int(input("Ingrese la cantidad de períodos: "))
 senial_periodos = np.tile(senial_periodo, periodo)
 
 # Generar señal con ruido
@@ -69,7 +69,7 @@ for idx, corr_data in enumerate(correlaciones):
     axes[idx].axvline(x=retardo, 
                       color='r', linestyle='--', linewidth=1.5, 
                       alpha=0.5, label=f"Retardo = {retardo}")
-    axes[idx].set_title(f'Correlación: Señal período con Ruido vs Satélite {svnum} (Correlación máx = {correlacion_max:.2f})', 
+    axes[idx].set_title(f'Correlación ({periodo} periodos): Señal incógnita con Ruido vs Satélite {svnum} (Correlación máx = {correlacion_max:.2f})', 
                         fontsize=12, fontweight='bold')
     axes[idx].set_xlabel('m')
     axes[idx].set_ylabel('Correlación')

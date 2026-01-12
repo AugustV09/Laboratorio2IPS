@@ -86,7 +86,7 @@ for idx, corr_data in enumerate(correlaciones):
     axes[idx].axvline(x=retardo, 
                       color='r', linestyle='--', linewidth=1.5, 
                       alpha=0.5, label=f"Retardo = {retardo}")
-    axes[idx].set_title(f'Correlación: Señal período con Ruido vs Satélite {svnum} (Correlación máx = {correlacion_max:.2f})', 
+    axes[idx].set_title(f'Intercorrelación: Señal incógnita con Ruido vs Satélite {svnum} (Correlación máx = {correlacion_max:.2f})', 
                         fontsize=12, fontweight='bold')
     axes[idx].set_xlabel('m')
     axes[idx].set_ylabel('Correlación')
