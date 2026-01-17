@@ -29,10 +29,12 @@ for svnum in range(1, 33):
     
     # Calcular intercorrelación circular
     intercorr = correlfft(senial_periodo, codigo)
-    
+    # Desplazar el resultado de la intercorrelación 511 muestras a la derecha
+    intercorr = np.roll(intercorr, 511)
+
     # Almacenar resultados
 
-    retardo_max = np.argmax(intercorr)
+    retardo_max = np.argmax(intercorr) - 511
     correlacion_max = np.max(intercorr)
 
     satelites_presentes.append({
@@ -60,12 +62,12 @@ top_3 = satelites_presentes[:3]
 
 fig, axes = plt.subplots(3, 1, figsize=(12, 10))
 
+# Crear array de retardos de -511 a 511
+retardos = np.arange(-511, 512)
+
 for idx, sat in enumerate(top_3):
     svnum = sat['satelite']
     intercorr = sat['intercorrelacion']
-    
-    # Crear array de retardos
-    retardos = np.arange(len(intercorr))
     
     axes[idx].plot(retardos, intercorr, 'b-', linewidth=1.5)
     # Marcar el pico máximo

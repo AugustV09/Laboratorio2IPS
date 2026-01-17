@@ -35,7 +35,7 @@ autocorr_y = np.roll(autocorr_y, 511)
 
 # Calcular intercorrelación de x e y
 intercorr_xy = correlfft(x, y)
-# Desplazar el resultado de la autocorrelación 511 muestras a la derecha
+# Desplazar el resultado de la intercorrelación 511 muestras a la derecha
 intercorr_xy = np.roll(intercorr_xy, 511)
 
 # Crear array de retardos de -511 a 511

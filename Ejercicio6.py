@@ -55,9 +55,11 @@ for svnum in satelites:
     
     # Calcular correlación circular entre la señal período y el código Gold
     correlacion = correlfft(senial_periodo_ruido, codigo)
+    # Desplazar el resultado de la correlacion 511 muestras a la derecha
+    correlacion = np.roll(correlacion, 511)
     
     # Encontrar el retardo y valor máximo
-    retardo_max = np.argmax(correlacion)
+    retardo_max = np.argmax(correlacion) - 511
     correlacion_max = np.max(correlacion)
     
     correlaciones.append({
@@ -72,14 +74,14 @@ for svnum in satelites:
 # Graficar las correlaciones
 fig, axes = plt.subplots(3, 1, figsize=(12, 10))
 
+# Crear array de retardos de -511 a 511
+retardos = np.arange(-511, 512)
+
 for idx, corr_data in enumerate(correlaciones):
     svnum = corr_data['satelite']
     correlacion = corr_data['correlacion']
     retardo = corr_data['retardo']
     correlacion_max = corr_data['correlacion_max']
-    
-    # Crear array de retardos
-    retardos = np.arange(len(correlacion))
     
     axes[idx].plot(retardos, correlacion, 'b-', linewidth=1.5)
     # Marcar el pico máximo
