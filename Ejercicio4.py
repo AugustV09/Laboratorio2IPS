@@ -1,9 +1,4 @@
 import os
-
-os.environ["OCTAVE_EXECUTABLE"] = (
-    r"D:\Octavio\GNU Octave\Octave-10.3.0\mingw64\bin\octave-cli.exe"
-)
-
 import numpy as np
 import matplotlib.pyplot as plt
 from oct2py import octave

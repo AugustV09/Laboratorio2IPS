@@ -51,7 +51,7 @@ def main():
         mostrar_menu()
         
         try:
-            opcion = input("\nSeleccione una opción (0-7): ").strip()
+            opcion = input("\nSeleccione una opción: ").strip()
             
             if opcion == "0":
                 print("\n👋 ¡Hasta luego!")
@@ -60,7 +60,7 @@ def main():
                 ejecutar_ejercicio(int(opcion))
                 input("\nPresione Enter para continuar...")
             else:
-                print("\n❌ Opción inválida. Por favor, seleccione una opción entre 0 y 7.")
+                print("\n❌ Opción inválida.")
                 input("Presione Enter para continuar...")
                 
         except KeyboardInterrupt:
